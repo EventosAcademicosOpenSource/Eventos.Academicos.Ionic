@@ -1,0 +1,26 @@
+* {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+ion-card {
+  --background: #ffff;
+}
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+.header-md::after {
+  background-image: none;
+}
+.header-ios ion-toolbar:last-child {
+  --border-width: 0;
+}
+ion-card {
+  margin-top: 0px;
+  --background: #ffff;
+}
+ion-card-title {
+  font-size: 1.6em;
+}

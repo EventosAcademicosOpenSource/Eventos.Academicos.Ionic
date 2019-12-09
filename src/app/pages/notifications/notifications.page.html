@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mensagens</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-list>
+    <ion-item *ngFor="let notification of notifications">
+      <ion-label class="ion-text-wrap">
+        <ion-text color="secondary">
+          <h3>{{ notification.title }}</h3>
+        </ion-text>
+        <p>{{ notification.message }}</p>
+        <ion-text color="primary">
+          <p>Em: {{ notification.dateNotification }}</p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

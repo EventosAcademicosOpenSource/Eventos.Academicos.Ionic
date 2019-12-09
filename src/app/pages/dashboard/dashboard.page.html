@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Eventos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary" fullscreen="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="!status">
+    <ion-row *ngFor="let event of eventsList">
+      <ion-card>
+        <img (click)="eventDetail(event,$event)" src="{{ event.photo }}" />
+        <ion-card-header (click)="eventDetail(event,$event)">
+          <ion-card-title>{{ event.name }}</ion-card-title>
+          <ion-card-subtitle>Local: {{ event.place }}</ion-card-subtitle>
+          <ion-card-subtitle>{{ event.date_time_event }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button
+            mode="ios"
+            color="light"
+            *ngIf="!event.like"
+            (click)="like(event)"
+          >
+            <ion-icon name="thumbs-up" ion-text color="medium"></ion-icon
+            >Favoritar
+          </ion-button>
+          <ion-button
+            mode="ios"
+            fill="outline"
+            color="light"
+            *ngIf="event.like"
+            (click)="like(event)"
+          >
+            <ion-icon name="thumbs-up" ion-text color="primary"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </div>
+  <div *ngIf="status">
+    <ion-row>
+      <ion-card>
+        <div style="height: 50px; width: auto;">
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </div>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </ion-card-title>
+          <ion-card-subtitle>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </ion-card-subtitle>
+          <ion-card-subtitle>
+            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+          </ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+
+    <ion-row>
+      <ion-card>
+        <div style="height: 50px; width: auto;">
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </div>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </ion-card-title>
+          <ion-card-subtitle>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </ion-card-subtitle>
+          <ion-card-subtitle>
+            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+          </ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+    <ion-row>
+      <ion-card>
+        <div style="height: 50px; width: auto;">
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </div>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </ion-card-title>
+          <ion-card-subtitle>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </ion-card-subtitle>
+          <ion-card-subtitle>
+            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+          </ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+  </div>
+</ion-content>

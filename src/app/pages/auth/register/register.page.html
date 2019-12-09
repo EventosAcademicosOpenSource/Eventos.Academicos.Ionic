@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissRegister()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Registrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="register(form)" method="post">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input ngModel name="fName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        type="email"
+        ngModel
+        name="email"
+        autocapitalize="off"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-label *ngIf="isEmptyObject(errors.email)" color="medium"
+      >{{ errors?.email }}</ion-label
+    >
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" ngModel name="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirme Senha</ion-label>
+      <ion-input type="password" ngModel name="confirmPassword"></ion-input>
+    </ion-item>
+    <ion-label *ngIf="isEmptyObject(errors.confirmPassword)" color="medium"
+      >{{ errors?.confirmPassword }}
+    </ion-label>
+    <ion-row class="ion-margin"></ion-row>
+    <ion-button
+      [disabled]="!isenabled"
+      type="submit"
+      expand="full"
+      [color]="isenabled ? 'primary' : 'medium'"
+      >Registrar</ion-button
+    >
+  </form>
+</ion-content>

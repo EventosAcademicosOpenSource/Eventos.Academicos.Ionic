@@ -1,0 +1,7 @@
+{
+  "name": "eventapp-ifrs",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

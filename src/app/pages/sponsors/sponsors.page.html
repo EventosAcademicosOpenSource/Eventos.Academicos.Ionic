@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Patrocinadores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" fullscreen="true">
+  <ion-row *ngFor="let sponsor of sponsors">
+    <ion-card>
+      <img *ngIf="sponsor.photo" src="{{ sponsor.photo }}" />
+      <ion-card-header>
+        <ion-card-title>{{ sponsor.name }}</ion-card-title>
+        <ion-card-subtitle>{{ sponsor.email }}</ion-card-subtitle>
+        <ion-label
+          *ngIf="sponsor.link"
+          (click)="openLink(sponsor.link)"
+          color="secondary"
+          >Ir para Web Site</ion-label
+        >
+      </ion-card-header>
+    </ion-card>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-title>Palestrantes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="fadeIn">
+    <ion-item *ngFor="let speak of speakers">
+      <ion-avatar slot="start">
+        <img src="{{ speak.photo }}" style="background-color:#f4f5f8" />
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">{{ speak.name }}</ion-label>
+      <ion-button
+        mode="ios"
+        fill="outline"
+        color="primary"
+        (click)="touchSpeakDetail(speak)"
+        >Sobre</ion-button
+      >
+    </ion-item>
+  </ion-list>
+</ion-content>

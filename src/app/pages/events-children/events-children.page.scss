@@ -1,0 +1,15 @@
+* {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+ion-card {
+  --background: #ffff;
+}
+ion-card-subtitle {
+  text-transform: lowercase;
+}
+ion-card-title {
+  font-size: 1.6em;
+}

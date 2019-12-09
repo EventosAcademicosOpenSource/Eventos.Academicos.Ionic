@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "987804507122",
+    "firebase_url": "https://events-academic.firebaseio.com",
+    "project_id": "events-academic",
+    "storage_bucket": "events-academic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987804507122:android:79681f579b547534baa96b",
+        "android_client_info": {
+          "package_name": "com.eventsapp.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987804507122-cr3mi8iv5ioinb3iobrhsg34a7e831uk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMYrjBm5mSpKWgcwj2-IIqjDsElIQ1QCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987804507122-cr3mi8iv5ioinb3iobrhsg34a7e831uk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

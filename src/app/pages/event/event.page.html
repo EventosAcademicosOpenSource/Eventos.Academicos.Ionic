@@ -1,0 +1,221 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" fullscreen="true">
+  <div>
+    <ion-card style="margin-top: 0px;">
+      <img #header src="{{ event.photo }}" />
+      <ion-card-header class="fadeIn">
+        <ion-card-title>{{ event.name }}</ion-card-title>
+        <ion-card-subtitle>{{ event.date_time_event }}</ion-card-subtitle>
+        <ion-label
+          *ngIf="event.link"
+          (click)="openLink(event.link)"
+          color="secondary"
+          >Ir para Web Site</ion-label
+        >
+      </ion-card-header>
+      <ion-item>
+        <ion-label>{{ event.place }}</ion-label>
+      </ion-item>
+      <ion-item class="fadeInBottom">
+        <ion-label class="ion-text-wrap" color="medium">
+          <div [innerHTML]="event.description | sanitizeHtml"></div>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-grid *ngIf="status">
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-icon
+                name="calendar"
+                style="font-size:3.0em;"
+                color="primary"
+              ></ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-skeleton-text
+                animated
+                style="width: 100%"
+              ></ion-skeleton-text>
+              <ion-skeleton-text
+                animated
+                style="width: 90%"
+              ></ion-skeleton-text>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="ion-text-center">
+            <ion-card-header>
+              <ion-icon
+                name="notifications"
+                style="font-size:3.0em;"
+                color="primary"
+              >
+              </ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-skeleton-text
+                animated
+                style="width: 100%"
+              ></ion-skeleton-text>
+              <ion-skeleton-text
+                animated
+                style="width: 90%"
+              ></ion-skeleton-text>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card class="ion-text-center">
+            <ion-card-header>
+              <ion-icon
+                name="megaphone"
+                style="font-size:3.0em;"
+                color="primary"
+              ></ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-skeleton-text
+                animated
+                style="width: 100%"
+              ></ion-skeleton-text>
+              <ion-skeleton-text
+                animated
+                style="width: 90%"
+              ></ion-skeleton-text>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-icon
+                name="people"
+                style="font-size:3.0em;"
+                color="primary"
+              ></ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-skeleton-text
+                animated
+                style="width: 100%"
+              ></ion-skeleton-text>
+              <ion-skeleton-text
+                animated
+                style="width: 90%"
+              ></ion-skeleton-text>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="!status">
+      <ion-row>
+        <ion-col *ngIf="isEmptyObject(event.notifications)">
+          <ion-card
+            class="ion-text-center"
+            (click)="touchNotifications(event.notifications)"
+          >
+            <ion-card-header>
+              <ion-icon
+                name="notifications"
+                style="font-size:3.0em;"
+                color="primary"
+              >
+              </ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              Mensagens
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col *ngIf="isEmptyObject(event.speeches)">
+          <ion-card
+            class="ion-text-center"
+            (click)="touchSchedule(event.speeches)"
+          >
+            <ion-card-header>
+              <ion-icon
+                name="calendar"
+                style="font-size:3.0em;"
+                color="primary"
+              ></ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              Agenda
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="isEmptyObject(event.event_childrens)">
+          <ion-card
+            class="ion-text-center"
+            (click)="touchEventChildren(event.event_childrens)"
+          >
+            <ion-card-header>
+              <ion-icon
+                name="school"
+                style="font-size:3.0em;"
+                color="primary"
+              ></ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              Participe
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="isEmptyObject(event.speakers)">
+          <ion-card
+            class="ion-text-center"
+            (click)="touchSpeakers(event.speakers)"
+          >
+            <ion-card-header>
+              <ion-icon
+                name="people"
+                style="font-size:3.0em;"
+                color="primary"
+              ></ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              Palestrantes
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col *ngIf="isEmptyObject(event.sponsors)">
+          <ion-card
+            (click)="touchSponsors(event.sponsors)"
+            class="ion-text-center"
+          >
+            <ion-card-header>
+              <ion-icon
+                name="megaphone"
+                style="font-size:3.0em;"
+                color="primary"
+              ></ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              Patrocinadores
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
