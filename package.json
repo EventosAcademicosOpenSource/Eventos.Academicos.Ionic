@@ -24,7 +24,7 @@
     "@ionic-native/core": "^5.17.1",
     "@ionic-native/fcm": "^5.17.1",
     "@ionic-native/file": "^5.17.1",
-    "@ionic-native/in-app-browser": "^5.17.1",
+    "@ionic-native/in-app-browser": "^5.23.0",
     "@ionic-native/ionic-webview": "^5.17.1",
     "@ionic-native/local-notifications": "^5.17.1",
     "@ionic-native/native-storage": "^5.17.1",
